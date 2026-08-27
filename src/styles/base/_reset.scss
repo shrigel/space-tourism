@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--color-blue-900);
+    color: var(--color-white);
+    font-family: var(--font-barlow);
+}
