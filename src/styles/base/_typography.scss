@@ -1,0 +1,125 @@
+@use '../abstract/mixin.scss' as *;
+
+.text-preset-1 {
+    font-family: var(--font-bellefair);
+    font-size: var(--font-size-80);
+    line-height: 1;
+    letter-spacing: 0;
+
+    @include respond-tablet {
+        font-size: var(--font-size-144);
+    }
+}
+
+.text-preset-2 {
+    font-family: var(--font-bellefair);
+    font-size: var(--font-size-56);
+    line-height: 1;
+    letter-spacing: 0;
+
+    @include respond-tablet {
+        font-size: var(--font-size-80);
+    }
+
+    @include respond-desktop {
+        font-size: var(--font-size-96);
+    }
+}
+
+.text-preset-3 {
+    font-family: var(--font-bellefair);
+    font-size: var(--font-size-24);
+    line-height: 1;
+    letter-spacing: 0;
+
+    @include respond-tablet {
+        font-size: var(--font-size-40);
+    }
+
+    @include respond-desktop {
+        font-size: var(--font-size-56);
+    }
+}
+
+.text-preset-4 {
+    font-family: var(--font-bellefair);
+    font-size: var(--font-size-18);
+    line-height: 1;
+    letter-spacing: 0;
+
+    @include respond-tablet {
+        font-size: var(--font-size-24);
+    }
+
+    @include respond-desktop {
+        font-size: var(--font-size-32);
+    }
+}
+
+.text-preset-5 {
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--font-size-20);
+    line-height: 1;
+    letter-spacing: 0.15em;
+
+    @include respond-desktop {
+        font-size: var(--font-size-28);
+        letter-spacing: 0.25rem;
+    }
+}
+
+.text-preset-6 {
+    font-family: var(--font-bellefair);
+    font-size: var(--font-size-16);
+    line-height: 1;
+    letter-spacing: 0.15em;
+
+    @include respond-tablet {
+        font-size: var(--font-size-28);
+        letter-spacing: 0;
+
+    }
+}
+
+.text-preset-7 {
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--font-size-14);
+    line-height: 1;
+    letter-spacing: 0.125rem;
+}
+
+.text-preset-8 {
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--font-size-14);
+    line-height: 1;
+    letter-spacing: 0.15em;
+
+    @include respond-tablet {
+        font-size: var(--font-size-16);
+        letter-spacing: 0.125rem;
+    }
+}
+
+.text-preset-8-bold {
+    font-family: var(--font-barlow-condensed);
+    font-size: var(--font-size-16);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 2.7px;
+}
+
+.text-preset-9 {
+    font-family: var(--font-barlow);
+    font-size: var(--font-size-15);
+    line-height: 1.8;
+    letter-spacing: 0;
+    color: var(--color-blue-300);
+
+    @include respond-tablet {
+        font-size: var(--font-size-16);
+    }
+
+    @include respond-desktop {
+        font-size: var(--font-size-18);
+    }
+}
