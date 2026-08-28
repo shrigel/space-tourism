@@ -4,10 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './styles/main.scss';
 
-import Home from './components/pages/Home/Home';
-import Destination from './components/pages/Destination/Destination';
-import Crew from './components/pages/Crew/Crew';
-import Technology from './components/pages/Technology/Technology';
+import Home from './pages/Home/Home';
+import Destination from './pages/Destination/Destination';
+import Crew from './pages/Crew/Crew';
+import Technology from './pages/Technology/Technology';
 
 const root = createRoot(document.getElementById('root'));
 
