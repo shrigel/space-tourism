@@ -1,0 +1,134 @@
+@use "../../styles/abstract/mixin.scss" as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.5rem;
+}
+
+.header__logo {
+    padding-inline-start: 1.5rem;
+}
+
+.header__hamburger {
+    padding-inline-end: 1.5rem;
+    display: block;
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+}
+
+.header__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 67.73%;
+    padding-inline-start: 2rem;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(40px);
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    &--open {
+        transform: translateX(0);
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-block-start: 9rem;
+    }
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-white);
+
+    &.active {
+        border-right: 3px solid var(--color-white);
+    }
+}
+
+@include respond-tablet {
+    .header {
+        padding-block: 0;
+    }
+
+    .header__logo {
+        padding-inline: 2.5rem;
+    }
+
+    .header__hamburger {
+        display: none;
+    }
+
+    .header__nav {
+        transform: none;
+        transition: none;
+        position: static;
+        padding-inline: 2.5rem;
+        width: 100%;
+        height: 6rem;
+
+        ul {
+            height: 100%;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 3rem;
+            margin-block-start: 0;
+        }
+    }
+
+    .nav-item {
+        height: 100%;
+
+        &.active {
+            border-right: none;
+            border-bottom: 3px solid var(--color-white);
+
+            .nav-item__number {
+                display: none;
+            }
+        }
+    }
+}
+
+@include respond-desktop {
+    .header {
+        margin-block-start: 2.5rem;
+    }
+
+    .header__logo {
+        padding-inline: 4rem;
+    }
+
+    .header__line {
+        position: relative;
+        z-index: 2;
+        height: 1px;
+        width: 100%;
+        margin-inline-end: -2rem;
+        background-color: var(--color-white);
+    }
+
+    .header__nav {
+        padding-inline: 4rem;
+    }
+
+    .nav-item {
+        &.active {
+            .nav-item__number {
+                display: inline-block;
+            }
+        }
+    }
+}
