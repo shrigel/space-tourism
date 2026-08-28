@@ -1,0 +1,104 @@
+@use '../../styles/abstract/mixin.scss' as *;
+
+body {
+    background-image: url('../../assets/home/background-home-mobile.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+.home {
+    padding: 1.5rem;
+    display: flex;
+    flex: 1;
+}
+
+.home__container {
+    display: flex;
+}
+
+.home__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.home__hero {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.home__explore {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.home__explore-button {
+    border: none;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 9rem;
+    cursor: pointer;
+}
+
+@include respond-tablet {
+    body {
+        background-image: url('../../assets/home/background-home-tablet.jpg');
+    }
+
+    .text-preset-4 {
+        font-size: var(--font-size-32);
+    }
+
+    .home {
+        padding-block: 8rem;
+        padding-inline: 2.5rem;
+        justify-content: center;
+    }
+
+    .home__wrapper {
+        max-width: 32rem;
+    }
+
+    .home__explore {
+        align-items: flex-end;
+    }
+
+    .home__explore-button {
+        width: 17rem;
+    }
+}
+
+@include respond-desktop {
+    body {
+        background-image: url('../../assets/home/background-home-desktop.jpg');
+        background-position: right;
+    }
+
+    .home__container {
+        align-items: flex-end;
+    }
+
+    .home__wrapper {
+        max-width: 69.375rem;
+        flex-direction: row;
+    }
+
+    .home__hero {
+        text-align: left;
+        width: 50%;
+    }
+
+    .home__explore {
+        width: 50%;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+}

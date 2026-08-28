@@ -58,6 +58,11 @@
     }
 }
 
+.text-preset-8 {
+    font-size: var(--font-size-16);
+    letter-spacing: 0.125rem;
+}
+
 @include respond-tablet {
     .header {
         padding-block: 0;
