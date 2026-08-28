@@ -1,10 +1,7 @@
 @use '../../styles/abstract/mixin.scss' as *;
 
-body {
-    background-image: url('../../assets/home/background-home-mobile.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
+.page--home {
+    @include page("home");
 }
 
 .home {
@@ -48,10 +45,6 @@ body {
 }
 
 @include respond-tablet {
-    body {
-        background-image: url('../../assets/home/background-home-tablet.jpg');
-    }
-
     .text-preset-4 {
         font-size: var(--font-size-32);
     }
@@ -76,11 +69,6 @@ body {
 }
 
 @include respond-desktop {
-    body {
-        background-image: url('../../assets/home/background-home-desktop.jpg');
-        background-position: right;
-    }
-
     .home__container {
         align-items: flex-end;
     }

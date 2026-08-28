@@ -4,7 +4,7 @@ import "./Home.scss"
 
 export default function Home() {
     return (
-        <>
+        <div className="page--home">
             <Header />
 
             <main className="home">
@@ -27,6 +27,6 @@ export default function Home() {
                     </div>
                 </div>
             </main>
-        </>
+        </div>
     )
 }
