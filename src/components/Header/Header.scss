@@ -1,4 +1,5 @@
 @use "../../styles/abstract/mixin.scss" as *;
+@use "../../styles/base/typography.scss" as *;
 
 .header {
     display: flex;
@@ -58,7 +59,12 @@
     }
 }
 
-.text-preset-8 {
+.nav-item__number {
+    @include text-preset-8-bold;
+}
+
+.nav-item__page {
+    @include text-preset-8;
     font-size: var(--font-size-16);
     letter-spacing: 0.125rem;
 }

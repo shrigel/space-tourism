@@ -1,142 +1,165 @@
 @use '../abstract/mixin.scss' as *;
 
-.text-preset-1 {
-    font-family: var(--font-bellefair);
-    font-size: var(--font-size-80);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0;
+@mixin typography($family: null,
+    $size: null,
+    $weight: null,
+    $line-height: null,
+    $letter-spacing: null,
+    $color: null) {
+    @if $family {
+        font-family: $family;
+    }
 
-    @include respond-tablet {
-        font-size: var(--font-size-144);
+    @if $size {
+        font-size: $size;
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $line-height {
+        line-height: $line-height;
+    }
+
+    @if $letter-spacing {
+        letter-spacing: $letter-spacing;
+    }
+
+    @if $color {
+        color: $color;
     }
 }
 
-.text-preset-2 {
-    font-family: var(--font-bellefair);
-    font-size: var(--font-size-56);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0;
+@mixin text-preset-1 {
+    @include typography($family: var(--font-bellefair),
+        $size: var(--font-size-80),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0);
 
     @include respond-tablet {
-        font-size: var(--font-size-80);
+        @include typography($size: var(--font-size-144));
+    }
+}
+
+@mixin text-preset-2 {
+    @include typography($family: var(--font-bellefair),
+        $size: var(--font-size-56),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0);
+
+    @include respond-tablet {
+        @include typography($size: var(--font-size-80));
     }
 
     @include respond-desktop {
-        font-size: var(--font-size-96);
+        @include typography($size: var(--font-size-96));
     }
 }
 
-.text-preset-3 {
-    font-family: var(--font-bellefair);
-    font-size: var(--font-size-24);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0;
+@mixin text-preset-3 {
+    @include typography($family: var(--font-bellefair),
+        $size: var(--font-size-24),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0);
 
     @include respond-tablet {
-        font-size: var(--font-size-40);
+        @include typography($size: var(--font-size-40));
     }
 
     @include respond-desktop {
-        font-size: var(--font-size-56);
+        @include typography($size: var(--font-size-56));
     }
 }
 
-.text-preset-4 {
-    font-family: var(--font-bellefair);
-    font-size: var(--font-size-18);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0;
+@mixin text-preset-4 {
+    @include typography($family: var(--font-bellefair),
+        $size: var(--font-size-18),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0);
 
     @include respond-tablet {
-        font-size: var(--font-size-24);
+        @include typography($size: var(--font-size-24));
     }
 
     @include respond-desktop {
-        font-size: var(--font-size-32);
+        @include typography($size: var(--font-size-32));
     }
 }
 
-.text-preset-5 {
-    font-family: var(--font-barlow-condensed);
-    font-size: var(--font-size-20);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.15em;
+@mixin text-preset-5 {
+    @include typography($family: var(--font-barlow-condensed),
+        $size: var(--font-size-20),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0.15em);
 
     @include respond-desktop {
-        font-size: var(--font-size-28);
-        letter-spacing: 0.25rem;
+        @include typography($size: var(--font-size-28),
+            $letter-spacing: 0.25rem);
     }
 }
 
-.text-preset-6 {
-    font-family: var(--font-bellefair);
-    font-size: var(--font-size-16);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.15em;
+@mixin text-preset-6 {
+    @include typography($family: var(--font-barlow-condensed),
+        $size: var(--font-size-16),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0.15em);
 
     @include respond-tablet {
-        font-size: var(--font-size-28);
-        letter-spacing: 0;
-
+        @include typography($family: var(--font-bellefair),
+            $size: var(--font-size-28),
+            $letter-spacing: 0);
     }
 }
 
-.text-preset-7 {
-    font-family: var(--font-barlow-condensed);
-    font-size: var(--font-size-14);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.125rem;
+@mixin text-preset-7 {
+    @include typography($family: var(--font-barlow-condensed),
+        $size: var(--font-size-14),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0.125rem);
 }
 
-.text-preset-8 {
-    font-family: var(--font-barlow-condensed);
-    font-size: var(--font-size-14);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.15em;
+@mixin text-preset-8 {
+    @include typography($family: var(--font-barlow-condensed),
+        $size: var(--font-size-14),
+        $weight: 400,
+        $line-height: 1,
+        $letter-spacing: 0.15em);
 
     @include respond-tablet {
-        font-size: var(--font-size-16);
-        letter-spacing: 0.125rem;
+        @include typography($size: var(--font-size-16),
+            $letter-spacing: 0.125rem);
     }
 }
 
-.text-preset-8-bold {
-    font-family: var(--font-barlow-condensed);
-    font-size: var(--font-size-16);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 2.7px;
+@mixin text-preset-8-bold {
+    @include typography($family: var(--font-barlow-condensed),
+        $size: var(--font-size-16),
+        $weight: 700,
+        $line-height: 1,
+        $letter-spacing: 2.7px);
 }
 
-.text-preset-9 {
-    font-family: var(--font-barlow);
-    font-size: var(--font-size-15);
-    font-weight: 400;
-    line-height: 1.8;
-    letter-spacing: 0;
-    color: var(--color-blue-300);
+@mixin text-preset-9 {
+    @include typography($family: var(--font-barlow),
+        $size: var(--font-size-15),
+        $weight: 400,
+        $line-height: 1.8,
+        $letter-spacing: 0,
+        $color: var(--color-blue-300));
 
     @include respond-tablet {
-        font-size: var(--font-size-16);
+        @include typography($size: var(--font-size-16));
     }
 
     @include respond-desktop {
-        font-size: var(--font-size-18);
+        @include typography($size: var(--font-size-18));
     }
-}
-
-.text-preset-nav {
-    font-family: var(--font-barlow-condensed);
-    font-size: var(--font-size-16);
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.125rem;
 }

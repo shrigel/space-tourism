@@ -44,8 +44,8 @@ export default function Header() {
                                 onClick={() => setIsNavOpen(false)}
                                 className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
                             >
-                                <span className="text-preset-8-bold nav-item__number">{item.num}</span>
-                                <span className="text-preset-8">{item.page}</span>
+                                <span className="nav-item__number">{item.num}</span>
+                                <span className="nav-item__page">{item.page}</span>
                             </NavLink>
                         </li>
                     ))}

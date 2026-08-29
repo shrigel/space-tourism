@@ -23,8 +23,8 @@ export default function Destination() {
 
             <main className="destination">
                 <div className="destination__title">
-                    <span className="destination__title-number text-preset-8-bold">01</span>
-                    <span className="text-preset-6">PICK YOUR DESTINATION</span>
+                    <span className="destination__title-number">01</span>
+                    <span className="destination__title-text">PICK YOUR DESTINATION</span>
                 </div>
 
                 <div className="destination__container">
@@ -33,6 +33,7 @@ export default function Destination() {
                     </div>
 
                     <div className="destination__wrapper">
+                        {/* <div className="destination__wrapper-sub"> */}
                         <div className="destination__navigation">
                             {data.destinations.map((destination, index) => (
                                 <div
@@ -41,7 +42,7 @@ export default function Destination() {
                                 >
                                     <button
                                         onClick={() => setDestinationIndex(index)}
-                                        className="text-preset-8 destination__navigation-button"
+                                        className="destination__navigation-button"
                                     >
                                         {destination.name}
                                     </button>
@@ -50,23 +51,24 @@ export default function Destination() {
                         </div>
 
                         <div className="destination__explanation">
-                            <h2 className="text-preset-2">{currentDestination.name}</h2>
+                            <h2 className="destination__name">{currentDestination.name}</h2>
 
-                            <p className="text-preset-9">{currentDestination.description}</p>
+                            <p className="destination__description">{currentDestination.description}</p>
                         </div>
 
                         <div className="destination__line" aria-hidden="true" />
 
                         <div className="destination__data">
                             <div className="destination__data-item">
-                                <span className="text-preset-7">AVG. DISTANCE</span>
-                                <span className="text-preset-6">{currentDestination.distance}</span>
+                                <span>AVG. DISTANCE</span>
+                                <span>{currentDestination.distance}</span>
                             </div>
                             <div className="destination__data-item">
-                                <span className="text-preset-7">AVG. TRAVEL TIME</span>
-                                <span className="text-preset-6">{currentDestination.travel}</span>
+                                <span>EST. TRAVEL TIME</span>
+                                <span>{currentDestination.travel}</span>
                             </div>
                         </div>
+                        {/* </div> */}
                     </div>
                 </div>
             </main>
