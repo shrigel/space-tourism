@@ -64,6 +64,18 @@
 .destination__navigation-item {
     display: flex;
     align-items: flex-start;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+
+        .destination__navigation-button {
+            transition: color 0.2s ease;
+            color: var(--color-white);
+        }
+    }
 
     &.active {
         border-bottom: 3px solid var(--color-white);
@@ -167,6 +179,11 @@
         padding-inline: 0;
         width: min(100% - 4rem, 69.375rem);
         flex: 1;
+    }
+
+    .destination__title-number {
+        font-size: var(--font-size-28);
+        letter-spacing: 0.295rem;
     }
 
     .destination__container {

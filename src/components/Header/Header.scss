@@ -53,6 +53,12 @@
     gap: 0.5rem;
     text-decoration: none;
     color: var(--color-white);
+    border-right: 3px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-right: 3px solid rgb(255, 255, 255, .5);
+    }
 
     &.active {
         border-right: 3px solid var(--color-white);
@@ -101,6 +107,13 @@
 
     .nav-item {
         height: 100%;
+        border-right: none;
+        border-bottom: 3px solid transparent;
+
+        &:hover {
+            border-right: none;
+            border-bottom: 3px solid rgb(255, 255, 255, .5);
+        }
 
         &.active {
             border-right: none;

@@ -3,6 +3,7 @@
 
 .page--crew {
     @include page("crew");
+    overflow: hidden;
 }
 
 .crew {
@@ -118,7 +119,7 @@
     }
 
     .crew__title-number {
-        font-size: 1.25rem;
+        font-size: var(--font-size-20);
     }
 
     .crew__title-text {
@@ -157,7 +158,7 @@
     }
 
     .crew__title-number {
-        font-size: 1.75rem;
+        font-size: var(--font-size-28);
         letter-spacing: 0.295rem;
     }
 
