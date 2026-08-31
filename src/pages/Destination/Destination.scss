@@ -54,13 +54,6 @@
     text-align: center;
 }
 
-// .destination__wrapper-sub {
-//     display: flex;
-//     flex-direction: column;
-//     gap: 1.5rem;
-//     text-align: center;
-// }
-
 .destination__navigation {
     display: flex;
     height: 2rem;
@@ -86,6 +79,7 @@
     border: none;
     background: none;
     color: var(--color-blue-300);
+    cursor: pointer;
 }
 
 .destination__explanation {

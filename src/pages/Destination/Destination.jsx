@@ -33,21 +33,24 @@ export default function Destination() {
                     </div>
 
                     <div className="destination__wrapper">
-                        {/* <div className="destination__wrapper-sub"> */}
                         <div className="destination__navigation">
-                            {data.destinations.map((destination, index) => (
-                                <div
-                                    key={destination.name}
-                                    className={`destination__navigation-item ${destination.name === currentDestination.name ? "active" : ""}`}
-                                >
-                                    <button
-                                        onClick={() => setDestinationIndex(index)}
-                                        className="destination__navigation-button"
+                            {data.destinations.map((destination, index) => {
+                                const isActive = destinationIndex === index;
+
+                                return (
+                                    <div
+                                        key={destination.name}
+                                        className={`destination__navigation-item ${isActive ? "active" : ""}`}
                                     >
-                                        {destination.name}
-                                    </button>
-                                </div>
-                            ))}
+                                        <button
+                                            onClick={() => setDestinationIndex(index)}
+                                            className="destination__navigation-button"
+                                        >
+                                            {destination.name}
+                                        </button>
+                                    </div>
+                                )
+                            })}
                         </div>
 
                         <div className="destination__explanation">
@@ -68,7 +71,6 @@ export default function Destination() {
                                 <span>{currentDestination.travel}</span>
                             </div>
                         </div>
-                        {/* </div> */}
                     </div>
                 </div>
             </main>
