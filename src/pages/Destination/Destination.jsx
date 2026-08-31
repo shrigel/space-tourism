@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { getImageUrl } from "../../utils/imageHelper";
+import { useTabNavigation } from "../../hooks/useTabNavigation";
 import "./Destination.scss"
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
 
 export default function Destination() {
-    const [destinationIndex, setDestinationIndex] = useState(0);
-    const currentDestination = data.destinations[destinationIndex];
-
-    const images = import.meta.glob('../../assets/**/*.{png,webp}', {
-        eager: true,
-        import: 'default',
-    });
-
-    const getImageUrl = (path) => {
-        const cleanPath = path.replace(/^\.\//, '');
-        return images[`../../assets/${cleanPath}`];
-    };
+    const {
+        currentIndex: destinationIndex,
+        setCurrentIndex: setDestinationIndex,
+        currentItem: currentDestination
+    } = useTabNavigation(data.destinations);
 
     return (
         <div className="page--destination">
@@ -27,7 +21,7 @@ export default function Destination() {
                     <span className="destination__title-text">PICK YOUR DESTINATION</span>
                 </div>
 
-                <div className="destination__container">
+                <div className="destination__container" role="tabpanel" aria-label={currentDestination.name}>
                     <div className="destination__image">
                         <img src={getImageUrl(currentDestination.images.webp)} alt="" />
                     </div>
@@ -43,6 +37,9 @@ export default function Destination() {
                                         className={`destination__navigation-item ${isActive ? "active" : ""}`}
                                     >
                                         <button
+                                            role="tab"
+                                            aria-selected={destinationIndex === index}
+                                            aria-label={`Slide ${index + 1}: ${destination.name}`}
                                             onClick={() => setDestinationIndex(index)}
                                             className="destination__navigation-button"
                                         >

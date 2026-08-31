@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { getImageUrl } from "../../utils/imageHelper";
+import { useTabNavigation } from "../../hooks/useTabNavigation";
 import "./Technology.scss";
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json";
 
 export default function Technology() {
-    const [technologyIndex, setTechnologyIndex] = useState(0);
-    const currentTechnology = data.technology[technologyIndex];
-
-    const images = import.meta.glob('../../assets/**/*.{png,webp,jpg}', {
-        eager: true,
-        import: 'default',
-    });
-
-    const getImageUrl = (path) => {
-        const cleanPath = path.replace(/^\.\//, '');
-        return images[`../../assets/${cleanPath}`];
-    };
+    const {
+        currentIndex: technologyIndex,
+        setCurrentIndex: setTechnologyIndex,
+        currentItem: currentTechnology
+    } = useTabNavigation(data.technology);
 
     return (
         <div className="page--technology">
@@ -27,7 +21,7 @@ export default function Technology() {
                     <span className="technology__title-text">SPACE LAUNCH 101</span>
                 </div>
 
-                <div className="technology__container">
+                <div className="technology__container" role="tabpanel" aria-label={currentTechnology.name}>
                     <div className="technology__image">
                         <picture>
                             <source media="(min-width: 1024px)" srcset={getImageUrl(currentTechnology.images.portrait)} />
@@ -35,7 +29,7 @@ export default function Technology() {
                         </picture>
                     </div>
 
-                    <div className="technology__content" role="tabpanel" aria-label={currentTechnology.name}>
+                    <div className="technology__content">
                         <div className="technology__pagination">
                             {data.technology.map((technology, index) => {
                                 const isActive = technologyIndex === index;

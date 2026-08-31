@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { getImageUrl } from "../../utils/imageHelper";
+import { useTabNavigation } from "../../hooks/useTabNavigation";
 import "./Crew.scss";
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
 
 export default function Crew() {
-    const [crewIndex, setCrewIndex] = useState(0);
-    const currentCrew = data.crew[crewIndex];
-
-    const images = import.meta.glob('../../assets/**/*.{png,webp}', {
-        eager: true,
-        import: 'default',
-    });
-
-    const getImageUrl = (path) => {
-        const cleanPath = path.replace(/^\.\//, '');
-        return images[`../../assets/${cleanPath}`];
-    };
+    const {
+        currentIndex: crewIndex,
+        setCurrentIndex: setCrewIndex,
+        currentItem: currentCrew
+    } = useTabNavigation(data.crew);
 
     return (
         <div className="page--crew">
