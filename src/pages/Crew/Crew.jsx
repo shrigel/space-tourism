@@ -1,7 +1,7 @@
 import { getImageUrl } from "../../utils/imageHelper";
 import { useTabNavigation } from "../../hooks/useTabNavigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { slideVariants, fadeVariants } from "../../utils/animationVariants";
+import { slideVariants, fadeVariants, itemVariants } from "../../utils/animationVariants";
 import "./Crew.scss";
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
@@ -20,10 +20,15 @@ export default function Crew() {
             <Header />
 
             <main className="crew">
-                <div className="crew__title">
+                <motion.div
+                    className="crew__title"
+                    variants={itemVariants}
+                    initial="initial"
+                    animate="animate"
+                >
                     <span className="crew__title-number">02</span>
                     <span className="crew__title-text">MEET YOUR CREW</span>
-                </div>
+                </motion.div>
 
                 <div className="crew__container" role="tabpanel" aria-label={currentCrew.name}>
                     <div className="crew__content">

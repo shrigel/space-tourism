@@ -1,7 +1,7 @@
 import { getImageUrl } from "../../utils/imageHelper";
 import { useTabNavigation } from "../../hooks/useTabNavigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { slideVariants, fadeVariants } from "../../utils/animationVariants";
+import { slideVariants, fadeVariants, itemVariants } from "../../utils/animationVariants";
 import "./Destination.scss"
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
@@ -21,10 +21,15 @@ export default function Destination() {
             <Header />
 
             <main className="destination">
-                <div className="destination__title">
+                <motion.div
+                    className="destination__title"
+                    variants={itemVariants}
+                    initial="initial"
+                    animate="animate"
+                >
                     <span className="destination__title-number">01</span>
                     <span className="destination__title-text">PICK YOUR DESTINATION</span>
-                </div>
+                </motion.div>
 
                 <div className="destination__container" role="tabpanel" aria-label={currentDestination.name}>
                     <div className="destination__image">

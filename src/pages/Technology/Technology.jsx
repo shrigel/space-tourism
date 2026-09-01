@@ -1,7 +1,7 @@
 import { getImageUrl } from "../../utils/imageHelper";
 import { useTabNavigation } from "../../hooks/useTabNavigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { slideVariants, fadeVariants } from "../../utils/animationVariants";
+import { slideVariants, fadeVariants, itemVariants } from "../../utils/animationVariants";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import "./Technology.scss";
 import Header from "../../components/Header/Header";
@@ -24,10 +24,15 @@ export default function Technology() {
             <Header />
 
             <main className="technology">
-                <div className="technology__title">
+                <motion.div
+                    className="technology__title"
+                    variants={itemVariants}
+                    initial="initial"
+                    animate="animate"
+                >
                     <span className="technology__title-number">03</span>
                     <span className="technology__title-text">SPACE LAUNCH 101</span>
-                </div>
+                </motion.div>
 
                 <div className="technology__container" role="tabpanel" aria-label={currentTechnology.name}>
 
@@ -65,7 +70,11 @@ export default function Technology() {
 
 
                     <div className="technology__content">
-                        <div className="technology__pagination">
+                        <motion.div
+                            className="technology__pagination"
+                            variants={itemVariants}
+                            initial="initial"
+                            animate="animate">
                             {data.technology.map((technology, index) => {
                                 const isActive = technologyIndex === index;
 
@@ -80,7 +89,7 @@ export default function Technology() {
                                     </button>
                                 )
                             })}
-                        </div>
+                        </motion.div>
 
                         <AnimatePresence mode="wait">
                             <motion.div
