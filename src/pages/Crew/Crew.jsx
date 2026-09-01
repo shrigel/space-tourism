@@ -1,5 +1,7 @@
 import { getImageUrl } from "../../utils/imageHelper";
 import { useTabNavigation } from "../../hooks/useTabNavigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { slideVariants, fadeVariants } from "../../utils/animationVariants";
 import "./Crew.scss";
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
@@ -7,29 +9,41 @@ import data from "../../assets/data.json"
 export default function Crew() {
     const {
         currentIndex: crewIndex,
-        setCurrentIndex: setCrewIndex,
-        currentItem: currentCrew
+        direction,
+        currentItem: currentCrew,
+        paginate,
+        goToTab
     } = useTabNavigation(data.crew);
 
     return (
         <div className="page--crew">
             <Header />
+
             <main className="crew">
                 <div className="crew__title">
                     <span className="crew__title-number">02</span>
                     <span className="crew__title-text">MEET YOUR CREW</span>
                 </div>
 
-                <div className="crew__container">
-                    <div className="crew__content" role="tabpanel" aria-label={currentCrew.name}>
-                        <div className="crew__explanation">
-                            <div className="crew__info">
-                                <span className="crew__role">{currentCrew.role}</span>
-                                <span className="crew__name">{currentCrew.name}</span>
-                            </div>
+                <div className="crew__container" role="tabpanel" aria-label={currentCrew.name}>
+                    <div className="crew__content">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentCrew.name}
+                                variants={fadeVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                className="crew__explanation"
+                            >
+                                <div className="crew__info">
+                                    <span className="crew__role">{currentCrew.role}</span>
+                                    <span className="crew__name">{currentCrew.name}</span>
+                                </div>
 
-                            <p className="crew__bio">{currentCrew.bio}</p>
-                        </div>
+                                <p className="crew__bio">{currentCrew.bio}</p>
+                            </motion.div>
+                        </AnimatePresence>
 
                         <div className="crew__pagination" role="tablist" aria-label="Crew member list">
                             {data.crew.map((member, index) => {
@@ -41,7 +55,7 @@ export default function Crew() {
                                         aria-selected={crewIndex === index}
                                         aria-label={`Slide ${index + 1}: ${member.name}`}
                                         className={`crew__pagination-dot ${isActive ? "active" : ""}`}
-                                        onClick={() => setCrewIndex(index)}>
+                                        onClick={() => goToTab(index)}>
                                     </button>
                                 )
                             })}
@@ -49,7 +63,31 @@ export default function Crew() {
                     </div>
 
                     <div className="crew__image">
-                        <img src={getImageUrl(currentCrew.images.webp)} alt="" />
+                        <AnimatePresence mode="wait" custom={{ direction, axis: "x" }}>
+                            <motion.div
+                                key={currentCrew.name}
+                                custom={{ direction, axis: "x" }}
+                                variants={slideVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0.2}
+                                onDragEnd={(e, { offset, velocity }) => {
+                                    const swipeThreshold = 50;
+                                    if (offset.x < -swipeThreshold || velocity.x < -500) {
+                                        paginate(1);
+                                    } else if (offset.x > swipeThreshold || velocity.x > 500) {
+                                        paginate(-1);
+                                    }
+                                }}
+                                style={{ cursor: "grab" }}
+                                whileTap={{ cursor: "grabbing" }}
+                            >
+                                <img src={getImageUrl(currentCrew.images.webp)} alt="" draggable="false" />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </div>
             </main>

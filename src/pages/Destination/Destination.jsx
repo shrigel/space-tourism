@@ -1,5 +1,7 @@
 import { getImageUrl } from "../../utils/imageHelper";
 import { useTabNavigation } from "../../hooks/useTabNavigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { slideVariants, fadeVariants } from "../../utils/animationVariants";
 import "./Destination.scss"
 import Header from "../../components/Header/Header";
 import data from "../../assets/data.json"
@@ -7,9 +9,12 @@ import data from "../../assets/data.json"
 export default function Destination() {
     const {
         currentIndex: destinationIndex,
-        setCurrentIndex: setDestinationIndex,
-        currentItem: currentDestination
+        direction,
+        currentItem: currentDestination,
+        paginate,
+        goToTab
     } = useTabNavigation(data.destinations);
+
 
     return (
         <div className="page--destination">
@@ -23,7 +28,31 @@ export default function Destination() {
 
                 <div className="destination__container" role="tabpanel" aria-label={currentDestination.name}>
                     <div className="destination__image">
-                        <img src={getImageUrl(currentDestination.images.webp)} alt="" />
+                        <AnimatePresence mode="wait" custom={{ direction, axis: "x" }}>
+                            <motion.div
+                                key={currentDestination.name}
+                                custom={{ direction, axis: "x" }}
+                                variants={slideVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0.2}
+                                onDragEnd={(e, { offset, velocity }) => {
+                                    const swipeThreshold = 50;
+                                    if (offset.x < -swipeThreshold || velocity.x < -500) {
+                                        paginate(1);
+                                    } else if (offset.x > swipeThreshold || velocity.x > 500) {
+                                        paginate(-1);
+                                    }
+                                }}
+                                style={{ cursor: "grab" }}
+                                whileTap={{ cursor: "grabbing" }}
+                            >
+                                <img src={getImageUrl(currentDestination.images.webp)} alt="" draggable="false" />
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
                     <div className="destination__wrapper">
@@ -40,7 +69,7 @@ export default function Destination() {
                                             role="tab"
                                             aria-selected={destinationIndex === index}
                                             aria-label={`Slide ${index + 1}: ${destination.name}`}
-                                            onClick={() => setDestinationIndex(index)}
+                                            onClick={() => goToTab(index)}
                                             className="destination__navigation-button"
                                         >
                                             {destination.name}
@@ -50,24 +79,56 @@ export default function Destination() {
                             })}
                         </div>
 
-                        <div className="destination__explanation">
-                            <h2 className="destination__name">{currentDestination.name}</h2>
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentDestination.name}
+                                variants={fadeVariants}
+                                initial="initial"
+                                animate="animate"
+                                exit="exit"
+                            >
+                                <div className="destination__explanation">
+                                    <h2 className="destination__name">{currentDestination.name}</h2>
 
-                            <p className="destination__description">{currentDestination.description}</p>
-                        </div>
+                                    <p className="destination__description">{currentDestination.description}</p>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
 
                         <div className="destination__line" aria-hidden="true" />
 
                         <div className="destination__data">
                             <div className="destination__data-item">
                                 <span>AVG. DISTANCE</span>
-                                <span>{currentDestination.distance}</span>
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={currentDestination.name}
+                                        variants={fadeVariants}
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                        className="destination__wrapper"
+                                    >
+                                        <span>{currentDestination.distance}</span>
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
                             <div className="destination__data-item">
                                 <span>EST. TRAVEL TIME</span>
-                                <span>{currentDestination.travel}</span>
+                                <AnimatePresence mode="wait">
+                                    <motion.div
+                                        key={currentDestination.name}
+                                        variants={fadeVariants}
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                    >
+                                        <span>{currentDestination.travel}</span>
+                                    </motion.div>
+                                </AnimatePresence>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </main>
