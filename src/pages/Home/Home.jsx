@@ -25,8 +25,8 @@ export default function Home() {
                         </div>
 
                         <motion.div variants={itemVariants} className="home__explore">
-                            <Link to="/destination">
-                                <button className="home__explore-button">EXPLORE</button>
+                            <Link to="/destination" className="home__explore-button">
+                                EXPLORE
                             </Link>
                         </motion.div>
 

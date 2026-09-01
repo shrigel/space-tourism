@@ -57,8 +57,10 @@
     border-right: 3px solid transparent;
     transition: border-color 0.2s ease;
 
-    &:hover {
-        border-right: 3px solid rgb(255, 255, 255, .5);
+    @media (hover: hover) {
+        &:hover {
+            border-right: 3px solid rgb(255, 255, 255, .5);
+        }
     }
 
     &.active {
@@ -111,9 +113,11 @@
         border-right: none;
         border-bottom: 3px solid transparent;
 
-        &:hover {
-            border-right: none;
-            border-bottom: 3px solid rgb(255, 255, 255, .5);
+        @media (hover: hover) {
+            &:hover {
+                border-right: none;
+                border-bottom: 3px solid rgb(255, 255, 255, .5);
+            }
         }
 
         &.active {

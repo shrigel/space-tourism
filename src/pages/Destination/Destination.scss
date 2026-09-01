@@ -68,12 +68,14 @@
     border-bottom: 3px solid transparent;
     transition: border-color 0.2s ease;
 
-    &:hover {
-        border-bottom: 3px solid rgb(255, 255, 255, 0.5);
+    @media (hover: hover) {
+        &:hover {
+            border-bottom: 3px solid rgb(255, 255, 255, 0.5);
 
-        .destination__navigation-button {
-            transition: color 0.2s ease;
-            color: var(--color-white);
+            .destination__navigation-button {
+                transition: color 0.2s ease;
+                color: var(--color-white);
+            }
         }
     }
 

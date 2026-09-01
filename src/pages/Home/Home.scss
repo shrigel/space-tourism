@@ -41,7 +41,7 @@
 }
 
 .home__explore {
-    text-decoration: none;
+    // text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,8 +58,17 @@
     cursor: pointer;
     transition: box-shadow 0.2s ease;
 
-    &:hover {
-        box-shadow: 0 0 0 88px rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0, 1);
+
+    @media (hover: hover) {
+        &:hover {
+            box-shadow: 0 0 0 88px rgba(255, 255, 255, 0.1);
+            color: rgb(0, 0, 0, 0.5);
+        }
     }
 }
 
