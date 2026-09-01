@@ -15,12 +15,13 @@
 .header__hamburger {
     padding-inline-end: 1.5rem;
     display: block;
-    z-index: 10;
+    z-index: 20;
     border: none;
     background-color: transparent;
 }
 
 .header__nav {
+    z-index: 19;
     position: fixed;
     top: 0;
     right: 0;
@@ -137,7 +138,7 @@
 
     .header__line {
         position: relative;
-        z-index: 2;
+        z-index: 20;
         height: 1px;
         width: 100%;
         margin-inline-end: -2rem;

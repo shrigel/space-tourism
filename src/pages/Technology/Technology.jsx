@@ -24,7 +24,7 @@ export default function Technology() {
                 <div className="technology__container" role="tabpanel" aria-label={currentTechnology.name}>
                     <div className="technology__image">
                         <picture>
-                            <source media="(min-width: 1024px)" srcset={getImageUrl(currentTechnology.images.portrait)} />
+                            <source media="(min-width: 1024px)" srcSet={getImageUrl(currentTechnology.images.portrait)} />
                             <img src={getImageUrl(currentTechnology.images.landscape)} alt="" />
                         </picture>
                     </div>
