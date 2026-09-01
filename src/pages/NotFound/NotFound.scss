@@ -1,0 +1,56 @@
+@use '../../styles/abstract/mixin.scss' as *;
+@use '../../styles/base/typography.scss' as *;
+
+.not-found {
+    display: flex;
+    flex: 1;
+    margin: 1.5rem;
+}
+
+.not-found__container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    flex: 1;
+    justify-content: center;
+
+    h2 {
+        @include text-preset-3
+    }
+}
+
+.button__home {
+    @include text-preset-4;
+    border: none;
+    text-decoration: none;
+    color: black;
+    background-color: var(--color-white);
+
+    text-align: center;
+
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
+@include respond-tablet {
+    .not-found {
+        margin: 2rem;
+    }
+
+    .not-found__container {
+        gap: 3rem;
+    }
+}
+
+@include respond-desktop {
+    .not-found {
+        margin: 2.5rem 0;
+        justify-content: center;
+
+    }
+
+    .not-found__container {
+        max-width: 69.375rem;
+    }
+}
